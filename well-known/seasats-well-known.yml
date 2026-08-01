@@ -1,0 +1,20 @@
+generated: '2026-07-21'
+method: probed
+source: live probes of https://seasats.com/.well-known/*
+host: https://seasats.com
+notes: >-
+  All /.well-known/ paths 301-redirect to https://www.seasats.com/.well-known/*
+  and return 404. Seasats publishes no machine-readable discovery documents
+  (no security.txt, OIDC/OAuth metadata, api-catalog, or ai-plugin). Recorded
+  for auditability; no scoring pointer emitted because no document was found.
+documents:
+- path: /.well-known/security.txt
+  status: 404
+- path: /.well-known/openid-configuration
+  status: 404
+- path: /.well-known/oauth-authorization-server
+  status: 404
+- path: /.well-known/api-catalog
+  status: 404
+- path: /.well-known/ai-plugin.json
+  status: 404
