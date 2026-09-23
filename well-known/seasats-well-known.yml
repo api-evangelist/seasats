@@ -2,19 +2,24 @@ generated: '2026-07-21'
 method: probed
 source: live probes of https://seasats.com/.well-known/*
 host: https://seasats.com
-notes: >-
-  All /.well-known/ paths 301-redirect to https://www.seasats.com/.well-known/*
-  and return 404. Seasats publishes no machine-readable discovery documents
-  (no security.txt, OIDC/OAuth metadata, api-catalog, or ai-plugin). Recorded
-  for auditability; no scoring pointer emitted because no document was found.
-documents:
-- path: /.well-known/security.txt
-  status: 404
-- path: /.well-known/openid-configuration
-  status: 404
-- path: /.well-known/oauth-authorization-server
-  status: 404
-- path: /.well-known/api-catalog
-  status: 404
-- path: /.well-known/ai-plugin.json
-  status: 404
+notes: All /.well-known/ paths 301-redirect to https://www.seasats.com/.well-known/* and return 404. Seasats
+  publishes no machine-readable discovery documents (no security.txt, OIDC/OAuth metadata, api-catalog,
+  or ai-plugin). Recorded for auditability; no scoring pointer emitted because no document was found.
+hosts:
+- host: https://seasats.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+x-shape-fix:
+  converted: '2026-08-20'
+  from: documents
+  note: Rewritten into hosts[] -> documents[], the only shape well_known_docs() in score.rb reads. A served
+    .well-known surface recorded in any other shape scores as absent.
